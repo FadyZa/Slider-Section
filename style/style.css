@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+
+:root {
+    --main-color: #2B31DA;
+    --sec-color: #ababcb;
+    --font-color: #636083;
+    --bg-card: #676dd1;
+}
+
+body {
+    background-color: #f3f4fb;
+}
+
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    scroll-behavior: smooth;
+}
+
+.container {
+    padding: 10px;
+}
+
+/* header start */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.logo h1 {
+    position: relative;
+    text-transform: capitalize;
+    color: var(--sec-color);
+    font-size: 26px;
+}
+
+.logo h1::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--bg-card);
+    top: -8px;
+    left: -6px;
+    z-index: -1;
+}
+
+header nav {
+    position: relative;
+    flex-basis: 100%;
+    display: flex;
+    height: 0;
+    flex-direction: column;
+    background-color: #fff;
+    gap: 14px;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: 0.4s ease;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+header nav::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 10px;
+    border-color: transparent transparent var(--main-color) transparent;
+}
+
+
+header nav button {
+    color: var(--font-color);
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+header nav button:hover {
+    color: var(--main-color);
+}
+
+header nav button::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: var(--main-color);
+    bottom: -5px;
+    left: 0;
+    transition: 0.34s cubic-bezier(0.4, 0, 1, 1);
+}
+
+header nav button:hover::before {
+    width: 100%;
+}
+
+
+header nav .clicked {
+    color: var(--main-color);
+}
+
+header nav .clicked::before {
+    width: 100%;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+label span {
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    height: 6px;
+    margin: 4px 0;
+    transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    width: 100%;
+}
+
+input[type="checkbox"]:checked+nav {
+    height: auto;
+    transform: scale(1);
+}
+
+/* header end */
+
+/* header media query START */
+
+@media (min-width:767px) {
+
+    header {
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+
+    header .logo {
+        flex-basis: 20%;
+    }
+
+    header nav {
+        flex-basis: 70%;
+        height: auto;
+        transform: scale(1);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        background-color: transparent;
+    }
+
+    header nav::before {
+        display: none;
+    }
+
+    header label {
+        display: none;
+    }
+}
+
+/* header media query END */
+
+
+/* section start */
+section {
+    margin-top: 20px;
+    transition: 0.7s ease-in-out;
+}
+
+section .container {
+    display: grid;
+    align-items: center;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 30px;
+}
+
+section .container::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    padding: 10px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.card figure {
+    border-radius: 45px 55px 50px 50px;
+    transition: 0.7s ease-in-out;
+}
+
+
+.card figure .image {
+    border-radius: 45px 55px 50px 50px;
+    background: rgb(247, 247, 248);
+    background: linear-gradient(15deg, rgb(87, 87, 89), rgb(227, 227, 227) 0% 52%);
+    display: flex;
+    justify-content: center;
+}
+
+.card figure img {
+    mix-blend-mode: multiply;
+    max-width: 100%;
+    height: 230px;
+    transition: 0.65s ease;
+}
+
+.card figcaption h2 {
+    color: var(--sec-color);
+    font-size: 17px;
+    margin: 20px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card figcaption h3 {
+    color: #5c175e;
+    font-size: 33px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.card figcaption p {
+    display: none;
+    color: #5c175e;
+
+}
+
+.card figcaption button {
+    background: none;
+    flex-basis: 100%;
+    text-align: left;
+    text-transform: capitalize;
+    color: #5c175e;
+    font-size: 19px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.card figcaption span {
+    font-size: 25px;
+    line-height: 10px;
+    display: inline-block;
+    font-weight: 800;
+}
+
+.card figcaption button:hover span {
+    animation: movingArr 0.6s infinite alternate;
+}
+
+@keyframes movingArr {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(15px);
+    }
+}
+
+.card figcaption div {
+    margin: 20px 5px 15px auto;
+    background-color: var(--main-color);
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 20px;
+    font-size: 25px;
+    color: #fff;
+    display: none;
+}
+
+.scroll {
+    text-align: right;
+    margin: 25px 50px 30px;
+}
+
+.prev,
+.nex {
+    padding: 10px 40px;
+    color: #fff;
+    font-size: 20px;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.43s ease-in-out;
+}
+
+.prev {
+    background-color: var(--sec-color);
+    background-color: var(--sec-color);
+}
+
+.prev:hover {
+    background-color: var(--bg-card);
+}
+
+.nex {
+    background-color: #9d70d1;
+    transform: translate(-12px, -18px);
+    box-shadow: -2px 3px 9px 1px #000;
+}
+
+.nex:hover {
+    background-color: #5c175e;
+}
+/* section end */
+
+
+/* /////////////////////////// */
+
+
+/* seeMore clicked card */
+.active {
+    height: 100%;
+}
+
+.active figure {
+    height: 100%;
+    padding: 20px;
+    padding-bottom: 0px;
+    background-color: var(--bg-card);
+}
+
+.active figure .image {
+    background: #fff !important;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.active figcaption {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.active figcaption h2 {
+    color: #fff;
+    white-space: pre-wrap;
+    overflow: visible;
+}
+
+.active figcaption h3 {
+    order: -1;
+    color: #fff;
+    flex-basis: 100%;
+    text-align: right;
+}
+
+.active figcaption p {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+
+.active figcaption button {
+    color: #fff;
+}
+
+.active figcaption div {
+    display: flex;
+    cursor: pointer;
+}
