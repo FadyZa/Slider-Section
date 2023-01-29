@@ -194,6 +194,7 @@ section .container {
     overflow-x: auto;
     scroll-behavior: smooth;
     gap: 30px;
+    justify-content: flex-start;
 }
 
 section .container::-webkit-scrollbar {
@@ -329,6 +330,7 @@ section .container::-webkit-scrollbar {
 .nex:hover {
     background-color: #5c175e;
 }
+
 /* section end */
 
 
