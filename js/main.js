@@ -41,16 +41,19 @@ function handlePage(categories,products){
     let category = document.querySelectorAll(".category");
     function filter(val = "all"){
         let numOfCards = 0;
+        let cardWidth = 0;
         AllCards.forEach((ele,i)=>{
             if(val.toLowerCase() === "all"){
                 console.log("a")
                 ele.classList.remove("hide")
                 numOfCards++;
+                currentCard = ele;
             }
             else{
                 if(category[i].innerHTML == val.toLowerCase()){
                     ele.classList.remove("hide")
                     numOfCards++;
+                    currentCard = ele;
                 }
                 else{
                     ele.classList.add("hide")
@@ -58,6 +61,7 @@ function handlePage(categories,products){
             }
         })
         handleGrid(numOfCards) // pass num of cards dynamically .114
+        move(currentCard) // move forward/back by currentCard width .97
     }
     filter("all") // make the default parameter = All
 
@@ -71,9 +75,8 @@ function handlePage(categories,products){
         })
     });
 
-    let mycard = document.querySelector("section .card");
+
     let moreBtns = document.querySelectorAll("figcaption button");
-    move(mycard) 
     SeeMore(AllCards,moreBtns)
 }
 
@@ -92,8 +95,9 @@ function handleGrid(num){
 
 // move forward and back
 function move(card){
+    cardsCont.scrollLeft = 0;
     nex.addEventListener("click",()=>{
-        console.log(card.clientWidth)
+        console.log(card)
         cardsCont.scrollLeft += card.clientWidth + 30;
 
     })
@@ -117,4 +121,3 @@ function SeeMore(cards,btns){
         })
     })
 }
-
